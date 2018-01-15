@@ -1,4 +1,6 @@
 .DS_Store
+/src/mysql/mysql.conf
+/src/redis/redis.conf
 node_modules/
 /dist/
 # Editor directories and files
