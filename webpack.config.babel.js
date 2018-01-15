@@ -2,11 +2,6 @@ const path = require('path')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const webpack = require('webpack')
 let externals = _externals();
-/* let conf = {
-	mysqlconf: './src/mysql/mysql.conf',
-	redisconf: './src/redis/redis.conf',
-}
-Object.assign(externals, conf); */
 export default {
 	entry: {
 		server: './src/server.js'
@@ -49,7 +44,7 @@ export default {
 	resolve: {
 		extensions: ['.js', '.json']
 	},
-	//context: __dirname,
+	context: __dirname,
 	node: {
 		console: true,
 		global: true,
