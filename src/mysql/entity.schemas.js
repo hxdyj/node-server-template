@@ -1,3 +1,3 @@
 module.exports = [
-    require('./entity/Test.entity')
+	require('./entity/Test.entity')
 ]
