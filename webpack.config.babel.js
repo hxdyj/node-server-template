@@ -19,6 +19,10 @@ export default {
 				compress: true
 			}
 		}),
+		new webpack.DefinePlugin({
+			PRODUCTION: true,
+		})
+
 	],
 	output: {
 		filename: '[name].js',
