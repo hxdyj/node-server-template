@@ -27,6 +27,18 @@ module.exports = (client, mysqlConnect) => { // Redis 和 Mysql 连接对象
 		res.send('lalalaalal');
 	})
 	require('./test/route.js')(...routeParam)
+
+	let msg = 'server start success.'
+
 	let server = http.createServer(app).listen(3000);
+
+
+	//require socket util to test.
+	require('../util/socket')(server)
+
+	console.log(clc.green.bold(msg))
+	log4server.info(msg)
+
+
 
 }

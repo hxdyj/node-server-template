@@ -11,10 +11,12 @@ bluebird.promisifyAll(redis.RedisClient.prototype)
 bluebird.promisifyAll(redis.Multi.prototype)
 
 client.on("error", function (err) {
-	console.log(clc.red.bold('Redis Connect Error.'), err)
+	let msg = 'redis connect error.'
+	console.log(clc.red.bold(msg), err)
+	log4server.info(msg, err)
 })
 client.on("connect", function (err) {
-	let msg = 'Redis Connect Success.'
+	let msg = 'redis connect success.'
 	console.log(clc.green.bold(msg))
 	log4server.info(msg)
 })

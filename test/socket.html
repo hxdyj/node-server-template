@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Test Socket</title>
+</head>
+
+<body>
+	<h1>Test Socket.</h1>
+	<script src="./bower_components/socket.io-client/dist/socket.io.js"></script>
+	<script>
+		var socket = io("http://localhost:3000"); //与服务器进行连接
+		socket.on('connect', function () {
+			socket.emit("foo", "hello"); //发送一个名为foo的事件，并且传递一个字符串数据‘hello’
+
+		});
+
+		socket.on('broadcast', function (data) {
+			console.log('socket msgAfter data : ', data)
+		});
+		socket.on('msg', function (data) {
+			console.log('socket msg data : ', data)
+		})
+	</script>
+</body>
+
+</html>
