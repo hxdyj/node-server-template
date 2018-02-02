@@ -1,7 +1,6 @@
 const fs = require('fs')
 const path = require("path")
 const bluebird = require("bluebird") //promise化
-var clc = require('cli-color');
 const redis = require("redis")
 
 let redisConfPath = path.join(__dirname, './redis.conf')
@@ -15,7 +14,9 @@ client.on("error", function (err) {
 	console.log(clc.red.bold('Redis Connect Error.'), err)
 })
 client.on("connect", function (err) {
-	console.log(clc.green.bold('Redis Connect Success.'))
+	let msg = 'Redis Connect Success.'
+	console.log(clc.green.bold(msg))
+	log4server.info(msg)
 })
 redis.client = client
 module.exports = redis.client

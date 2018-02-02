@@ -1,7 +1,6 @@
 const createConnection = require('typeorm').createConnection
 const fs = require('fs')
 const path = require('path')
-var clc = require('cli-color');
 
 let mysqlConfPath = path.join(__dirname, './mysql.conf')
 if (typeof (PRODUCTION) != 'undefined') mysqlConfPath = './mysql.conf'
