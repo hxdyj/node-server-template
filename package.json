@@ -11,7 +11,7 @@
 	"license": "ISC",
 	"scripts": {
 		"start": "node-dev --no-notify ./src/server.js",
-		"build": "webpack --process",
+		"build": "webpack --progress",
 		"test": "mocha -r intelli-espower-loader",
 		"testExpress": "node-dev --no-notify ./test-other/express/express.test.js"
 	},
