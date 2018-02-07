@@ -33,7 +33,7 @@ export default {
 				path.resolve(__dirname, "node_modules"),
 			],
 			query: {
-				plugins: ['transform-runtime'],
+				plugins: ['transform-runtime', 'transform-decorators-legacy', 'transform-class-properties'],
 				presets: ['es2015', 'stage-0'],
 			}
 		}, {

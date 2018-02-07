@@ -23,7 +23,7 @@
 
 
 
-const Test = require("../../mysql/model/Test.model").Test
+const Test = require("../../mysql/entity/Test.entity")
 const cli = require('cli-color')
 module.exports = (app, client, mysqlConnect) => {
 	var TestService = require('../../mysql/service/Test.service').getInstance(mysqlConnect)

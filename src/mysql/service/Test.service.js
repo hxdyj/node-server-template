@@ -1,4 +1,4 @@
-const Test = require("../model/Test.model").Test
+const Test = require("../entity/Test.entity")
 class TestAction {
 	static getInstance(mysqlConnect) {
 		if (!TestAction.instance) {

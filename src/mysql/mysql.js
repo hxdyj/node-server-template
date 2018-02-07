@@ -6,7 +6,7 @@ let mysqlConfPath = path.join(__dirname, './mysql.conf')
 if (typeof (PRODUCTION) != 'undefined') mysqlConfPath = './mysql.conf'
 const mysqlConf = JSON.parse(fs.readFileSync(mysqlConfPath))
 
-mysqlConf['entitySchemas'] = require('./entity.schemas')
+mysqlConf['entities'] = require('./entity.schemas')
 module.exports = (func) => {
 	createConnection(mysqlConf).then(connection => {
 		let msg = 'connect mysql success.'
