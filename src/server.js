@@ -12,6 +12,7 @@ log4js.configure(require('./config/log4js.config'));
 
 global.log4server = log4js.getLogger('server')
 global.clc = clc
+global._ = require('lodash')
 
 
 //引入redis数据库

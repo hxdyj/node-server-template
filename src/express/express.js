@@ -3,8 +3,10 @@ const express = require('express')
 const http = require('http')
 const app = express()
 const fileUpload = require('express-fileupload');
+const bodyParser = require('body-parser');
 
 app.use(fileUpload());
+app.use(bodyParser.urlencoded({ extended: false }))
 app.locals.title = "wing's express server template"
 
 //config static file preview server

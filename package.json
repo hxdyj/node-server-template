@@ -1,54 +1,56 @@
 {
-	"name": "server",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
-	"repository": {
-		"type": "git",
-		"url": "git@106.15.199.143:/home/gitrepo/server.git"
-	},
-	"author": "",
-	"license": "ISC",
-	"scripts": {
-		"start": "npm run generateEntity && node-dev --no-notify ./src/server.js",
-		"build": "webpack --progress",
-		"test": "mocha -r intelli-espower-loader",
-		"testExpress": "node-dev --no-notify ./test-other/express/express.test.js",
-		"generateEntity": "babel src/mysql/entity-origin --out-dir src/mysql/entity"
-	},
-	"dependencies": {
-		"bluebird": "^3.5.0",
-		"cli-color": "^1.2.0",
-		"express": "^4.15.4",
-		"express-fileupload": "^0.4.0",
-		"jade": "^1.11.0",
-		"log4js": "^2.5.2",
-		"mysql": "^2.15.0",
-		"ramda": "^0.25.0",
-		"redis": "^2.8.0",
-		"reflect-metadata": "^0.1.10",
-		"request": "^2.83.0",
-		"socket.io": "^2.0.3",
-		"strftime": "^0.10.0",
-		"typeorm": "^0.1.1"
-	},
-	"devDependencies": {
-		"babel-cli": "^6.26.0",
-		"babel-core": "^6.26.0",
-		"babel-loader": "^7.1.2",
-		"babel-plugin-transform-class-properties": "^6.24.1",
-		"babel-plugin-transform-decorators-legacy": "^1.3.4",
-		"babel-plugin-transform-runtime": "^6.23.0",
-		"babel-preset-es2015": "^6.24.1",
-		"babel-preset-stage-0": "^6.24.1",
-		"cross-env": "^3.0.0",
-		"file-loader": "^1.1.6",
-		"intelli-espower-loader": "^1.0.1",
-		"json-loader": "^0.5.7",
-		"mocha": "^4.0.1",
-		"node-dev": "^3.1.3",
-		"power-assert": "^1.4.4",
-		"uglifyjs-webpack-plugin": "^1.1.6",
-		"webpack": "^3.10.0"
-	}
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@106.15.199.143:/home/gitrepo/server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "start": "npm run generateEntity && node-dev --no-notify ./src/server.js",
+    "build": "webpack --progress",
+    "test": "mocha -r intelli-espower-loader",
+    "testExpress": "node-dev --no-notify ./test-other/express/express.test.js",
+    "generateEntity": "babel src/mysql/entity-origin --out-dir src/mysql/entity"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "body-parser": "^1.18.2",
+    "cli-color": "^1.2.0",
+    "express": "^4.15.4",
+    "express-fileupload": "^0.4.0",
+    "jade": "^1.11.0",
+    "lodash": "^4.17.5",
+    "log4js": "^2.5.2",
+    "mysql": "^2.15.0",
+    "ramda": "^0.25.0",
+    "redis": "^2.8.0",
+    "reflect-metadata": "^0.1.10",
+    "request": "^2.83.0",
+    "socket.io": "^2.0.3",
+    "strftime": "^0.10.0",
+    "typeorm": "^0.1.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "cross-env": "^3.0.0",
+    "file-loader": "^1.1.6",
+    "intelli-espower-loader": "^1.0.1",
+    "json-loader": "^0.5.7",
+    "mocha": "^4.0.1",
+    "node-dev": "^3.1.3",
+    "power-assert": "^1.4.4",
+    "uglifyjs-webpack-plugin": "^1.1.6",
+    "webpack": "^3.10.0"
+  }
 }

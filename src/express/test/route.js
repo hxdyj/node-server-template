@@ -1,3 +1,5 @@
+
+
 /**---------------------------  NOTE:  ----------------------------
  *
  *             This is test route for redis and mysql.
@@ -26,7 +28,7 @@
 const Test = require("../../mysql/entity/Test.entity")
 const cli = require('cli-color')
 module.exports = (app, client, mysqlConnect) => {
-	var TestService = require('../../mysql/service/Test.service').getInstance(mysqlConnect)
+	var ser = mysqlConnect.getRepository(Test)
 
 	app.put('/set/redis/:key/:value', function (req, res) {
 		client.multi().set(req.params.key, req.params.value).execAsync()
@@ -55,20 +57,32 @@ module.exports = (app, client, mysqlConnect) => {
 
 	app.put('/set/mysql/test/:name/:age', function (req, res) {
 		let test = new Test(req.params.name, req.params.age);
-		TestService.addTest(test).then(resp => {
-			res.send(resp)
-
-		})
-	})
-
-	app.get('/get/mysql/:id', function (req, res) {
-		TestService.getTestById(req.params.id).then(resp => {
+		ser.save(test).then(resp => {
 			res.send(resp)
 		})
 	})
 
-	app.delete('/del/mysql/:id', function (req, res) {
-		TestService.delTestById(req.params.id).then(resp => {
+	app.post('/update/mysql/test/', async function (req, res) {
+		let test = await ser.findOneById(req.body.id)
+		test.name = req.body.name
+		test.age = req.body.age
+		ser.save(test).then(resp => {
+			res.send(resp)
+		})
+	})
+
+	app.get('/get/mysql/test/:id', function (req, res) {
+		ser.createQueryBuilder("test").where("test.id = :id", {
+			id: req.params.id
+		}).getOne().then(resp => {
+			res.send(resp)
+		})
+	})
+
+	app.delete('/del/mysql/test/:id', function (req, res) {
+		ser.createQueryBuilder().delete().from(Test).where("id = :id", {
+			id: req.params.id
+		}).execute().then(resp => {
 			res.send(resp)
 		})
 	})

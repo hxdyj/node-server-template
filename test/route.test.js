@@ -37,8 +37,8 @@ describe('TEST 接口测试', () => {
 			console.log(body)
 			let deleteId = JSON.parse(body).id
 			console.log('delete id:', deleteId)
-			request.del(baseUrl + 'del/mysql/' + deleteId, function (error, response, body) {
-				request.get(baseUrl + 'get/mysql/' + deleteId, function (error, response, body) {
+			request.del(baseUrl + 'del/mysql/test/' + deleteId, function (error, response, body) {
+				request.get(baseUrl + 'get/mysql/test/' + deleteId, function (error, response, body) {
 					console.log(body)
 					done()
 				})
@@ -48,10 +48,17 @@ describe('TEST 接口测试', () => {
 
 	});
 	it('get mysql', (done) => {
-		request.get(baseUrl + 'get/mysql/1', function (error, response, body) {
+		request.get(baseUrl + 'get/mysql/test/1', function (error, response, body) {
 			console.log(body)
 			done()
 		})
+	});
+
+	it('post mysql', (done) => {
+		request.post(baseUrl + 'update/mysql/test/', { form: { id: 1, name: 'sl', age: 24 } }, function (error, response, body) {
+			console.log(body)
+			done()
+		});
 	});
 
 
