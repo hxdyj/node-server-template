@@ -1,11 +1,11 @@
 const Test = require("../entity/Test.entity")
-class TestAction {
+class TestService {
 	static getInstance(mysqlConnect) {
-		if (!TestAction.instance) {
-			TestAction.instance = new TestAction();
-			TestAction.prototype.mysqlConnect = mysqlConnect
+		if (!TestService.instance) {
+			TestService.instance = new TestService();
+			TestService.prototype.mysqlConnect = mysqlConnect
 		}
-		return TestAction.instance;
+		return TestService.instance;
 	}
 	addTest(test) {
 		return this.mysqlConnect
@@ -20,7 +20,9 @@ class TestAction {
 	getTestById(id) {
 		return this.mysqlConnect.getRepository(Test)
 			.createQueryBuilder("test")
-			.where("test.id = :id", { id: id })
+			.where("test.id = :id", {
+				id: id
+			})
 			.getOne();
 	}
 
@@ -29,7 +31,9 @@ class TestAction {
 			.createQueryBuilder()
 			.delete()
 			.from(Test)
-			.where("id = :id", { id: id })
+			.where("id = :id", {
+				id: id
+			})
 			.execute();
 	}
 
@@ -38,4 +42,4 @@ class TestAction {
 	}
 }
 
-module.exports = TestAction
+module.exports = TestService
