@@ -6,7 +6,10 @@ const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
 
 app.use(fileUpload());
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+	extended: true
+}))
 app.locals.title = "wing's express server template"
 
 //config static file preview server

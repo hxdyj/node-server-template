@@ -1,5 +1,3 @@
-
-
 /**---------------------------  NOTE:  ----------------------------
  *
  *             This is test route for redis and mysql.
@@ -61,8 +59,15 @@ module.exports = (app, client, mysqlConnect) => {
 			res.send(resp)
 		})
 	})
+	app.put('/put/mysql/test/', function (req, res) {
+		let test = new Test(req.body.name, req.body.age);
+		ser.save(test).then(resp => {
+			res.send(resp)
+		})
+	})
 
 	app.post('/update/mysql/test/', async function (req, res) {
+
 		let test = await ser.findOneById(req.body.id)
 		test.name = req.body.name
 		test.age = req.body.age

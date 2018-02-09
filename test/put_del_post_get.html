@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<input id="del_id" type="text">
+<br>
+<button onclick="put()">Put Param</button>
+<br>
+<button onclick="put_json()">Put JSON</button>
+<br>
+<button onclick="del()">Del</button>
+<br>
+<button onclick="post()">Post</button>
+<br>
+<button onclick="get()">Get</button>
+
+<body>
+	<script src="https://cdn.bootcss.com/fetch/2.0.3/fetch.min.js"></script>
+	<script>
+		var baseUrl = 'http://localhost:3000/'
+
+		function put() {
+			fetch(baseUrl + 'set/mysql/test/test-html1/0', {
+				method: 'PUT'
+			})
+		}
+
+		function put_json() {
+			fetch(baseUrl + 'put/mysql/test/', {
+				method: 'PUT',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					name: 'test-html-put-json',
+					age: 4,
+				})
+			})
+		}
+
+		function del() {
+			let id = document.getElementById('del_id').value
+			fetch(baseUrl + 'del/mysql/test/' + id, {
+				method: 'DElETE'
+			})
+		}
+
+		function post() {
+			fetch(baseUrl + 'update/mysql/test', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					id: 1,
+					name: 'test-html',
+					age: 0,
+				})
+			})
+		}
+
+		function get() {
+			fetch(baseUrl + 'get/mysql/test/1', {
+				method: 'GET'
+			})
+		}
+
+	</script>
+</body>
+
+</html>
