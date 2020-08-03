@@ -1,40 +1,45 @@
 <html>
+	<body>
+		<form
+			ref="uploadForm"
+			id="uploadForm"
+			action="http://localhost:3000/test/upload"
+			method="post"
+			encType="multipart/form-data"
+		>
+			<input type="file" name="sampleFile" />
+			<input type="submit" value="Upload!" />
+		</form>
 
-<body>
-	<form ref='uploadForm' id='uploadForm' action='http://localhost:3000/test/upload' method='post' encType="multipart/form-data">
+		<button onclick="upload()">JS upload</button>
+		<script src="https://cdn.bootcss.com/fetch/2.0.3/fetch.min.js"></script>
+		<script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.js"></script>
+		<script>
+			function upload() {
+				var input = document.querySelector('input[type="file"]');
+				var data = new FormData();
+				data.append('sampleFile', input.files[0]);
+				//data.append('file', input.files[0])
+				// data.append('user', 'hubot');
 
-		<input type="file" name="sampleFile" />
-		<input type='submit' value='Upload!' />
-	</form>
+				axios({
+					method: 'POST',
+					url: 'http://localhost:3000/test/upload',
+					data: data
+				});
+				/* 	fetch('http://localhost:3000/test/upload', {
+					method: 'POST',
+					body: data
+				}); */
 
-	<button onclick="upload()"> JS upload </button>
-	<script src="https://cdn.bootcss.com/fetch/2.0.3/fetch.min.js"></script>
-	<script>
-		function upload() {
-
-			var input = document.querySelector('input[type="file"]')
-			var data = new FormData()
-			data.append('sampleFile', input.files[0])
-			//data.append('file', input.files[0])
-			data.append('user', 'hubot')
-			fetch('http://localhost:3000/test/upload', {
-				method: 'POST',
-				body: data
-			})
-
-
-			// TEST FETCH IS OK
-			/* fetch('http://localhost:3000/get/redis/test', {
+				// TEST FETCH IS OK
+				/* fetch('http://localhost:3000/get/redis/test', {
 
 				method: 'GET'
  			}).then(function (resp) {
 				  alert(resp)
 			}) */
-
-
-		}
-
-	</script>
-</body>
-
+			}
+		</script>
+	</body>
 </html>

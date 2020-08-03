@@ -47,7 +47,6 @@ module.exports = (app, client, mysqlConnect) => {
 
 	app.delete('/del/redis/:key', function (req, res) {
 		client.del(req.params.key, (err, resp) => {
-
 			if (err) console.log(cli.red.bold('delete error.'), err)
 			res.send('delete success.')
 		})
